@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Дель Тур — Туристическое агентство в Улан-Удэ | Горящие туры</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Дель Тур — надежное туристическое агентство в Улан-Удэ. Горящие туры, пляжный отдых, индивидуальные маршруты и школьные туры. Опыт работы более 15 лет. Открывайте мир с нами!">
+    <meta name="keywords"
+        content="туры Улан-Удэ, горящие путевки, Дель Тур, отдых Маньчжурия, пляжный отдых, визы Улан-Удэ, турагентство Бурятия">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#003d7c", // Глубокий синий
+                        secondary: "#0099db", // Светло-синий акцент
+                        accent: "#ff6b35", // Оранжевый для кнопок-призывов
+                        "background-light": "#f8fafc",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Эффект Glassmorphism 2.0 (Добавлен пленочный шум) */
+        .glass-noise {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-noise::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-pattern {
+            background-color: #003d7c;
+            background-image: radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 5px, transparent 5px), radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 5px, transparent 5px);
+            background-size: 20px 20px;
+        }
+
+        /* Анимированный градиент для текста */
+        .animated-gradient-text {
+            background: linear-gradient(270deg, #0099db, #ff6b35, #003d7c, #0099db);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 8s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Стили для слайдера Hero */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 0;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05);
+            /* Легкий зум для компенсации анимации */
+            animation: slowZoomOut 10s linear infinite alternate;
+        }
+
+        @keyframes slowZoomOut {
+            0% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Мобильные фиксы для select */
+        @media (max-width: 768px) {
+            select {
+                padding-right: 2rem !important;
+                /* Убираем наложение иконки */
+            }
+        }
+
+        /* --- Стили для Dark Mode --- */
+        .dark body {
+            background-color: #0d1117;
+            /* Глубокий темный фон */
+            color: #c9d1d9;
+            /* Светло-серый текст */
+        }
+
+        .dark .bg-background-light {
+            background-color: #0d1117;
+        }
+
+        .dark .bg-white {
+            background-color: #161b22;
+            border-color: #30363d;
+        }
+
+        .dark .text-gray-900,
+        .dark .text-gray-800 {
+            color: #f0f6fc;
+        }
+
+        .dark .text-gray-700,
+        .dark .text-gray-600 {
+            color: #8b949e;
+        }
+
+        .dark .bg-gray-50 {
+            background-color: #0d1117;
+        }
+
+        .dark .border-gray-100,
+        .dark .border-gray-200 {
+            border-color: #30363d;
+        }
+
+        .dark .glassmorphism {
+            background: rgba(22, 27, 34, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark input,
+        .dark select {
+            background-color: #0d1117;
+            color: #f0f6fc;
+            border-color: #30363d;
+        }
+
+        /* --- Стили для Мобильного Tab-Bar --- */
+        .mobile-tab-bar {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+
+            /* Скрываем гамбургер и обычные контакты в шапке, ужимаем паддинги */
+            #navbar .container {
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
+
+            /* Делаем отступ снизу под таб-бар */
+            body {
+                padding-bottom: 70px;
+            }
+
+            /* Показываем Tab-Bar */
+            .mobile-tab-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 70px;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(0, 0, 0, 0.05);
+                z-index: 100;
+                justify-content: space-around;
+                align-items: center;
+                padding-bottom: env(safe-area-inset-bottom);
+                /* Для iPhone */
+                box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+            }
+
+            .dark .mobile-tab-bar {
+                background: rgba(22, 27, 34, 0.9);
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .tab-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 25%;
+                color: #64748b;
+                text-decoration: none;
+                transition: color 0.3s;
+                font-size: 0.65rem;
+                font-weight: 600;
+                gap: 4px;
+            }
+
+            .dark .tab-item {
+                color: #8b949e;
+            }
+
+            .tab-item.active {
+                color: #0099db;
+                /* Secondary color */
+            }
+
+            .tab-item .material-icons {
+                font-size: 1.5rem;
+            }
+
+            /* Центральная кнопка WhatsApp (Выпуклая FAB) */
+            .tab-fab {
+                position: relative;
+                top: -15px;
+                width: 56px;
+                height: 56px;
+                background-color: #25D366;
+                /* Цвет WhatsApp */
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                border: 4px solid white;
+                transition: transform 0.3s;
+            }
+
+            .dark .tab-fab {
+                border-color: #161b22;
+            }
+
+            .tab-fab:active {
+                transform: scale(0.95);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-light text-slate-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Навигация -->
+    <header class="fixed w-full top-0 z-50 glassmorphism shadow-sm transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Логотип -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div
+                    class="h-12 w-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white shrink-0 shadow-lg group-hover:scale-105 transition-transform">
+                    <span class="material-icons text-2xl">sailing</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-2xl leading-none text-primary uppercase tracking-wide">Дель
+                        Тур</span>
+                    <span class="text-[0.65rem] font-semibold tracking-[0.15em] text-gray-500 uppercase">Опыт более 15
+                        лет</span>
+                </div>
+            </a>
+
+            <!-- Меню (Desktop) -->
+            <nav class="hidden lg:flex gap-8 text-sm font-bold text-gray-700">
+                <a href="#search"
+                    class="hover:text-secondary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-secondary after:w-0 hover:after:w-full after:transition-all after:duration-300">Поиск
+                    туров</a>
+                <a href="#special"
+                    class="hover:text-secondary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-secondary after:w-0 hover:after:w-full after:transition-all after:duration-300 text-accent">Спецпредложения</a>
+                <a href="#about"
+                    class="hover:text-secondary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-secondary after:w-0 hover:after:w-full after:transition-all after:duration-300">О
+                    компании</a>
+                <a href="#reviews"
+                    class="hover:text-secondary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-secondary after:w-0 hover:after:w-full after:transition-all after:duration-300">Отзывы</a>
+                <a href="#contacts"
+                    class="hover:text-secondary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-secondary after:w-0 hover:after:w-full after:transition-all after:duration-300">Контакты</a>
+            </nav>
+
+            <!-- Контакты и CTA (Desktop) / Кнопка Dark Mode -->
+            <div class="flex items-center gap-6">
+                <!-- Переключатель Темной Темы -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors">
+                    <span class="material-icons" id="theme-icon">dark_mode</span>
+                </button>
+
+                <div class="hidden md:flex flex-col items-end">
+                    <a href="tel:+79146321129"
+                        class="text-primary dark:text-white font-bold text-lg hover:text-secondary transition-colors">+7
+                        (914)
+                        632-11-29</a>
+                    <span class="text-xs text-green-600 dark:text-green-400 font-medium flex items-center gap-1"><span
+                            class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>Поддержка 24/7</span>
+                </div>
+                <a href="#booking"
+                    class="hidden sm:flex bg-accent hover:bg-[#e65a25] text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg shadow-accent/30 hover:shadow-accent/50 hover:-translate-y-0.5 items-center gap-2">
+                    <span class="material-icons text-sm">flight_takeoff</span> Оставить заявку
+                </a>
+                <!-- Мобильное меню (Гамбургер) скрыт на мобильных, так как есть Tab-Bar -->
+                <button class="lg:hidden text-primary dark:text-white opacity-0 pointer-events-none w-0">
+                    <span class="material-icons text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный экран (Hero со Слайдером) -->
+    <section class="relative min-h-[90vh] md:min-h-[100vh] flex items-center justify-center overflow-hidden pt-20"
+        id="search">
+        <!-- Фоновые изображения (Слайдер) -->
+        <div class="absolute inset-0 z-0 bg-gray-900" id="hero-slider">
+            <!-- Слайд 1 (Пляжный отдых) -->
+            <div class="hero-slide active">
+                <img alt="Идеальный пляжный отдых"
+                    src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop" />
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/40 to-background-light"></div>
+            </div>
+            <!-- Слайд 2 (Горы/Природа) -->
+            <div class="hero-slide">
+                <img alt="Путешествие в горы"
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop" />
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/50 to-background-light"></div>
+            </div>
+            <!-- Слайд 3 (Азия/Китай/Архитектура) -->
+            <div class="hero-slide">
+                <img alt="Отдых в Азии"
+                    src="https://images.unsplash.com/photo-1549487228-a3f290563b78?q=80&w=2070&auto=format&fit=crop" />
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-background-light"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center animate-fade-in-up flex flex-col items-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 glassmorphism glass-noise rounded-full text-xs font-bold tracking-widest uppercase mb-6 text-white border-white/20 shadow-lg">
+                <span class="material-icons text-accent text-sm">star</span> Одобрено тысячами туристов
+            </div>
+            <!-- Анимированный градиент на названии -->
+            <h1
+                class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white mb-6 drop-shadow-2xl">
+                Откройте мир <br />с <span class="animated-gradient-text px-1">«Дель Тур»</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-white/95 max-w-2xl mx-auto leading-relaxed mb-8 md:mb-12 drop-shadow-md font-medium px-4"
+                id="hero-subtitle">
+                Горящие туры, индивидуальные маршруты и пляжный отдых из Улан-Удэ. Доверьте свой отпуск профессионалам!
+            </p>
+
+            <!-- Поисковая строка с эффектом шума (Glassmorphism 2.0) -->
+            <div
+                class="w-full max-w-4xl glassmorphism glass-noise rounded-2xl md:rounded-[2rem] p-3 md:p-5 shadow-2xl animate-float relative">
+                <div class="relative z-10"> <!-- Обертка Z-index чтобы инпуты были поверх шума -->
+                    <form class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                        <div class="relative">
+                            <span
+                                class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">place</span>
+                            <input type="text" placeholder="Куда летим? (Страна, курорт)"
+                                class="w-full pl-12 pr-4 py-3.5 rounded-xl border-none bg-white focus:ring-2 focus:ring-secondary text-gray-800 font-medium">
+                        </div>
+                        <div class="relative">
+                            <span
+                                class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">calendar_month</span>
+                            <input type="text" placeholder="Даты вылета"
+                                class="w-full pl-12 pr-4 py-3.5 rounded-xl border-none bg-white focus:ring-2 focus:ring-secondary text-gray-800 font-medium"
+                                onfocus="(this.type='date')" onblur="(this.type='text')">
+                        </div>
+                        <div class="relative">
+                            <span
+                                class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">person</span>
+                            <select
+                                class="w-full pl-12 pr-4 py-3.5 rounded-xl border-none bg-white focus:ring-2 focus:ring-secondary text-gray-800 font-medium appearance-none">
+                                <option>2 взрослых</option>
+                                <option>2 взрослых + 1 ребёнок</option>
+                                <option>1 взрослый</option>
+                                <option>Большая компания</option>
+                            </select>
+                        </div>
+                        <button type="button"
+                            class="bg-primary hover:bg-blue-800 text-white font-bold py-3.5 rounded-xl transition-colors shadow-lg flex items-center justify-center gap-2 h-full">
+                            <span class="material-icons">search</span> Найти тур
+                        </button>
+                    </form>
+                    <div
+                        class="flex flex-wrap items-center justify-center gap-3 mt-4 text-sm text-gray-700 font-medium">
+                        <span class="text-gray-500">Популярное:</span>
+                        <span
+                            class="px-3 py-1 bg-white/50 rounded-full cursor-pointer hover:bg-white transition">Таиланд</span>
+                        <span
+                            class="px-3 py-1 bg-white/50 rounded-full cursor-pointer hover:bg-white transition">Турция</span>
+                        <span
+                            class="px-3 py-1 bg-white/50 rounded-full cursor-pointer hover:bg-white transition">Китай</span>
+                        <span
+                            class="px-3 py-1 bg-white/50 rounded-full cursor-pointer hover:bg-white transition">Египет</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Индикаторы слайдера -->
+            <div class="flex gap-2 mt-8 md:mt-12" id="slider-dots">
+                <button class="w-10 h-2 rounded-full bg-white transition-all opacity-100"></button>
+                <button class="w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/80"></button>
+                <button class="w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/80"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Спецпредложение (Акция) -->
+    <section class="py-16 bg-white" id="special">
+        <div class="container mx-auto px-4">
+            <div
+                class="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-3xl p-8 lg:p-12 shadow-xl relative overflow-hidden flex flex-col lg:flex-row items-center gap-10">
+                <!-- Декор -->
+                <div class="absolute -right-20 -top-20 text-orange-500/10 transform rotate-12">
+                    <span class="material-icons" style="font-size: 300px;">celebration</span>
+                </div>
+
+                <div class="lg:w-1/2 relative z-10 space-y-6">
+                    <div
+                        class="inline-block bg-accent text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-wider uppercase mb-2 shadow-md">
+                        Супер Эксклюзив
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 leading-tight">
+                        Весна в Маньчжурии
+                    </h2>
+                    <p class="text-xl text-gray-700 font-medium border-l-4 border-accent pl-4">
+                        Поездка в Китай с 5 по 10 марта. Встречайте весну ярко!
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-700"><span
+                                class="material-icons text-green-500">check_circle</span> Прогулка по Старому городу и
+                            шоппинг</li>
+                        <li class="flex items-center gap-3 text-gray-700"><span
+                                class="material-icons text-green-500">check_circle</span> Обед BBQ в Хайларе и китайская
+                            баня</li>
+                        <li class="flex items-center gap-3 text-gray-700"><span
+                                class="material-icons text-green-500">check_circle</span> Праздничный банкет со звездами
+                            бурятской эстрады</li>
+                    </ul>
+                    <div class="pt-4 flex flex-wrap gap-4 items-center">
+                        <button
+                            class="bg-accent hover:bg-[#e65a25] text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-accent/40 transition-transform transform hover:-translate-y-1">
+                            Узнать стоимость
+                        </button>
+                        <p class="text-sm text-gray-500">*Места ограничены. Бронируйте заранее!</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative z-10 w-full h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1549487228-a3f290563b78?q=80&w=2070&auto=format&fit=crop"
+                        alt="Китай, Маньчжурия"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    <div
+                        class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg font-bold text-primary shadow-lg">
+                        5–10 Марта
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Каталог направлений -->
+    <section class="py-20 bg-background-light" id="tours">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-secondary font-bold tracking-widest uppercase text-sm">Куда отправимся?</span>
+                <h2 class="text-4xl font-display font-bold text-gray-900 mt-2 mb-4">Популярные направления</h2>
+                <p class="text-gray-600">Мы отбираем только лучшие отели с высоким рейтингом и комфортными условиями для
+                    вашего отдыха.</p>
+            </div>
+
+            <!-- Фильтры -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button class="bg-primary text-white px-5 py-2 rounded-full font-medium text-sm shadow">Все
+                    туры</button>
+                <button
+                    class="bg-white border border-gray-200 text-gray-700 hover:border-secondary hover:text-secondary px-5 py-2 rounded-full font-medium text-sm transition text-center">Пляжный
+                    отдых</button>
+                <button
+                    class="bg-white border border-gray-200 text-gray-700 hover:border-secondary hover:text-secondary px-5 py-2 rounded-full font-medium text-sm transition text-center">Экскурсии</button>
+                <button
+                    class="bg-white border border-gray-200 text-gray-700 hover:border-secondary hover:text-secondary px-5 py-2 rounded-full font-medium text-sm transition text-center">Семейные
+                    отели</button>
+                <button
+                    class="bg-white border border-gray-200 text-gray-700 hover:border-secondary hover:text-secondary px-5 py-2 rounded-full font-medium text-sm transition text-center">Без
+                    визы</button>
+            </div>
+
+            <!-- Сетка карточек -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Карточка 1 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c0d5b9af?q=80&w=2000&auto=format&fit=crop"
+                            alt="Таиланд Пхукет"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wide">
+                            Горящий тур</div>
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur p-1 rounded-md flex items-center gap-1 text-sm font-bold text-gray-800 shadow">
+                            <span class="material-icons text-yellow-400 text-sm">star</span> 5.0
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Остров Пхукет, Таиланд</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Белоснежные пляжи Ката и Карон. Идеально для
+                            отдыха с детьми или романтического путешествия.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="bg-blue-50 text-secondary text-xs px-2 py-1 rounded flex items-center gap-1"><span
+                                    class="material-icons text-[14px]">waves</span> 1 линия</span>
+                            <span
+                                class="bg-blue-50 text-secondary text-xs px-2 py-1 rounded flex items-center gap-1"><span
+                                    class="material-icons text-[14px]">restaurant</span> Завтраки</span>
+                            <span
+                                class="bg-blue-50 text-secondary text-xs px-2 py-1 rounded flex items-center gap-1"><span
+                                    class="material-icons text-[14px]">done</span> Без визы</span>
+                        </div>
+
+                        <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 line-through block">от 120 000 ₽</span>
+                                <span class="text-2xl font-bold text-primary">от 89 000 ₽<span
+                                        class="text-sm font-normal text-gray-500"> /чел</span></span>
+                            </div>
+                            <button
+                                class="w-12 h-12 rounded-full bg-orange-100 text-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                                <span class="material-icons">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=2076&auto=format&fit=crop"
+                            alt="Египет Хургада"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wide">
+                            Хит сезона</div>
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur p-1 rounded-md flex items-center gap-1 text-sm font-bold text-gray-800 shadow">
+                            <span class="material-icons text-yellow-400 text-sm">star</span> 4.8
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Хургада, Египет</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Шарм-эль-Шейх и Хургада. Лучшие рифы Красного
+                            моря и непревзойденный сервис.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="bg-blue-50 text-secondary text-xs px-2 py-1 rounded flex items-center gap-1"><span
+                                    class="material-icons text-[14px]">pool</span> Аквапарк</span>
+                            <span
+                                class="bg-blue-50 text-secondary text-xs px-2 py-1 rounded flex items-center gap-1"><span
+                                    class="material-icons text-[14px]">brunch_dining</span> Всё включено</span>
+                        </div>
+
+                        <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">от 105 000 ₽<span
+                                        class="text-sm font-normal text-gray-500"> /чел</span></span>
+                            </div>
+                            <button
+                                class="w-12 h-12 rounded-full bg-orange-100 text-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                                <span class="material-icons">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 (ОАЭ) -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop"
+                            alt="Дубай ОАЭ"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur p-1 rounded-md flex items-center gap-1 text-sm font-bold text-gray-800 shadow">
+                            <span class="material-icons text-yellow-400 text-sm">star</span> 4.9
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Дубай, ОАЭ</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Шопинг мирового класса, невероятная
+                            архитектура и шикарные городские пляжи.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="bg-blue-50 text-secondary text-xs px-2 py-1 rounded flex items-center gap-1"><span
+                                    class="material-icons text-[14px]">apartment</span> Центр города</span>
+                            <span
+                                class="bg-blue-50 text-secondary text-xs px-2 py-1 rounded flex items-center gap-1"><span
+                                    class="material-icons text-[14px]">local_mall</span> Шопинг</span>
+                        </div>
+
+                        <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">от 140 000 ₽<span
+                                        class="text-sm font-normal text-gray-500"> /чел</span></span>
+                            </div>
+                            <button
+                                class="w-12 h-12 rounded-full bg-orange-100 text-accent flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                                <span class="material-icons">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button
+                    class="border border-primary text-primary px-8 py-3 rounded-full font-bold hover:bg-primary hover:text-white transition-colors shadow-sm">
+                    Смотреть все предложения
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании & Доверие -->
+    <section class="py-20 relative bg-white" id="about">
+        <div class="absolute left-0 top-0 w-1/3 h-full bg-gray-50 hidden lg:block rounded-r-[100px]"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <div class="space-y-6">
+                    <span
+                        class="text-secondary font-bold tracking-widest uppercase text-sm border-l-2 border-secondary pl-3">О
+                        нас</span>
+                    <h2 class="text-4xl font-display font-bold text-gray-900 leading-tight">Ваш надежный компас в мире
+                        путешествий</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Туристическое агентство <strong>«Дель Тур»</strong> работает на рынке туристических услуг
+                        Улан-Удэ <strong>более 15 лет</strong>. За это время мы помогли тысячам туристов найти свой
+                        идеальный отдых, от горящих туров выходного дня до сложных индивидуальных маршрутов.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div
+                            class="border border-gray-100 p-5 rounded-2xl bg-white shadow-sm hover:shadow-md transition">
+                            <div
+                                class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4 text-primary">
+                                <span class="material-icons text-2xl">verified</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900">Надежность</h4>
+                            <p class="text-sm text-gray-500 mt-2">Официальное агентство (ООО «ДЕЛЬТУР»)</p>
+                        </div>
+                        <div
+                            class="border border-gray-100 p-5 rounded-2xl bg-white shadow-sm hover:shadow-md transition">
+                            <div
+                                class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-4 text-accent">
+                                <span class="material-icons text-2xl">receipt_long</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900">Комплексно</h4>
+                            <p class="text-sm text-gray-500 mt-2">Визы, страховки, авиабилеты 'под ключ'</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок Отзывов 2ГИС -->
+                <div class="relative" id="reviews">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-tr from-secondary/20 to-primary/10 rounded-[2.5rem] transform -rotate-3">
+                    </div>
+                    <div class="bg-white p-8 lg:p-10 rounded-[2rem] shadow-2xl relative border border-gray-50">
+                        <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+                            <div class="flex items-center gap-4">
+                                <!-- Имитация лого 2ГИС -->
+                                <div
+                                    class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                                    2Г
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xl text-gray-900">Дель Тур, агентство</h3>
+                                    <div class="flex items-center gap-1 mt-1">
+                                        <span class="material-icons text-yellow-400">star</span>
+                                        <span class="material-icons text-yellow-400">star</span>
+                                        <span class="material-icons text-yellow-400">star</span>
+                                        <span class="material-icons text-yellow-400">star</span>
+                                        <span class="material-icons text-yellow-400">star</span>
+                                        <span class="font-bold text-gray-900 ml-1">5.0</span>
+                                        <span class="text-sm text-gray-500 ml-2">на 2ГИС</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span
+                                class="hidden sm:inline-flex px-3 py-1 bg-blue-50 text-primary text-xs font-bold rounded-lg items-center gap-1">
+                                <span class="material-icons text-sm" style="font-size: 16px;">verified</span> Проверен
+                            </span>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Отзыв 1 -->
+                            <div class="flex gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 shrink-0 uppercase font-bold text-sm">
+                                    АМ
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <h4 class="font-bold text-gray-800 text-sm">Александра М.</h4>
+                                        <span class="text-xs text-gray-400">Неделю назад</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm italic">«Летали через Дель Тур в Таиланд всей
+                                        семьей. Менеджеры быстро подобрали отель у моря, оформили все документы. Спасибо
+                                        за чудесный отпуск!»</p>
+                                </div>
+                            </div>
+                            <!-- Отзыв 2 -->
+                            <div class="flex gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 shrink-0 uppercase font-bold text-sm">
+                                    ДС
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <h4 class="font-bold text-gray-800 text-sm">Дмитрий С.</h4>
+                                        <span class="text-xs text-gray-400">Месяц назад</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm italic">«Ездили в экскурсионный тур в Китай.
+                                        Организация на высшем уровне, программа насыщенная. Елена Станиславовна —
+                                        настоящий профессионал!»</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+                            <a href="#"
+                                class="text-secondary font-bold hover:text-primary transition-colors flex items-center justify-center gap-1">
+                                Больше отзывов <span class="material-icons text-sm">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Лидмагнит и Форма (CRM integration placeholder) -->
+    <section class="py-20 hero-pattern" id="booking">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
+                <div class="md:w-5/12 bg-primary p-10 text-white flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary rounded-full opacity-50 blur-3xl">
+                    </div>
+                    <div class="relative z-10">
+                        <span class="material-icons text-5xl mb-4 text-accent">flight_takeoff</span>
+                        <h3 class="text-3xl font-display font-bold mb-4">Бесплатный подбор тура</h3>
+                        <p class="text-blue-100 mb-8 leading-relaxed">
+                            Оставьте заявку, и наши менеджеры свяжутся с вами в течение 10 минут, чтобы подобрать лучшие
+                            варианты под ваш бюджет.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="material-icons text-secondary">check_circle</span>
+                                <span class="text-sm text-blue-50">Экономия до 30% при раннем бронировании</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="material-icons text-secondary">check_circle</span>
+                                <span class="text-sm text-blue-50">Только проверенные отели</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-7/12 p-8 lg:p-12">
+                    <form class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Ваше имя</label>
+                                <input type="text" placeholder="Алексей"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-secondary focus:border-secondary transition bg-gray-50">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Телефон</label>
+                                <input type="tel" placeholder="+7 (___) ___-__-__"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-secondary focus:border-secondary transition bg-gray-50">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Куда хотите полететь?</label>
+                            <input type="text" placeholder="Например: Пляжный отдых в Азии"
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-secondary focus:border-secondary transition bg-gray-50">
+                        </div>
+                        <div>
+                            <label class="flex items-start gap-3 mt-4 cursor-pointer">
+                                <input type="checkbox" checked
+                                    class="mt-1 w-4 h-4 text-secondary rounded border-gray-300 focus:ring-secondary">
+                                <span class="text-xs text-gray-500 leading-tight">Я согласен(на) на обработку
+                                    персональных данных и подтверждаю ознакомление с политикой
+                                    конфиденциальности.</span>
+                            </label>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-accent hover:bg-[#e65a25] text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-accent/40 text-lg mt-2">
+                            Получить подборку туров
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал (Footer) -->
+    <footer class="bg-[#0b1b36] text-gray-300 pt-16 pb-8 border-t-[6px] border-secondary" id="contacts">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+                <!-- О компании -->
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div
+                            class="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white shrink-0">
+                            <span class="material-icons">sailing</span>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-white uppercase tracking-wider">Дель
+                            Тур</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">Организация безупречного отдыха с 2005 года.
+                        Откройте мир вместе с надежным туроператором.</p>
+                    <!-- Соцсети -->
+                    <div class="flex gap-3">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-white transition group border border-white/5">
+                            <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-white hover:text-blue-600 text-white transition border border-transparent">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05 1.883 0 3.616-.636 5.001-1.721-1.771-.037-3.268-1.197-3.767-2.793.249.037.499.062.761.062.361 0 .724-.05 1.061-.137-1.847-.374-3.23-1.995-3.23-3.953v-.05c.537.299 1.16.486 1.82.511-1.084-.724-1.796-1.948-1.796-3.344 0-.736.199-1.423.536-2.01 1.996 2.456 4.978 4.07 8.356 4.244-.074-.299-.112-.612-.112-.924 0-2.247 1.822-4.071 4.071-4.071 1.17 0 2.221.487 2.959 1.285.923-.175 1.808-.524 2.595-1.011-.311.961-.96 1.773-1.834 2.285.823-.1 1.597-.311 2.321-.636-.549.823-1.248 1.548-2.023 2.126z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center hover:bg-white hover:text-blue-500 text-white transition border border-transparent">
+                            ВК
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Услуги и Навигация -->
+                <div>
+                    <h4 class="text-white font-bold mb-5 uppercase text-sm tracking-wider">Услуги</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-secondary transition-colors text-sm">Горящие туры</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors text-sm">Пляжный и экскурсионный
+                                отдых</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors text-sm">Индивидуальные
+                                маршруты</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors text-sm">Туры для школьников</a>
+                        </li>
+                        <li><a href="#" class="hover:text-secondary transition-colors text-sm">Оформление виз и
+                                страховок</a></li>
+                    </ul>
+                </div>
+
+                <!-- Контакты -->
+                <div class="col-span-1 lg:col-span-2">
+                    <h4 class="text-white font-bold mb-5 uppercase text-sm tracking-wider">Контакты</h4>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="material-icons text-secondary text-lg mt-0.5">location_on</span>
+                                <div class="text-sm">
+                                    <span class="text-white font-semibold">Офис продаж:</span><br>
+                                    г. Улан-Удэ, Октябрьский р-н,<br>ул. Сахьяновой, 9/19, 1 эт, оф. 121
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="material-icons text-secondary text-lg mt-0.5">schedule</span>
+                                <div class="text-sm">
+                                    <span class="text-white font-semibold">Режим работы:</span><br>
+                                    Ежедневно с 10:00 до 19:00<br>
+                                    Поддержка туристов 24/7
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <span class="material-icons text-secondary text-lg">phone</span>
+                                <div>
+                                    <a href="tel:+79146321129"
+                                        class="text-white hover:text-secondary transition font-bold block">+7-914-632-11-29</a>
+                                    <a href="tel:+79240117515"
+                                        class="text-white hover:text-secondary transition font-bold block">+7-924-011-75-15</a>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-icons text-[#25D366] text-lg">chat</span>
+                                <a href="#" class="text-white hover:text-[#25D366] transition text-sm">Написать в
+                                    WhatsApp</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Блок & Реквизиты -->
+            <div class="border-t border-gray-800 pt-8 pb-4 text-xs text-gray-500">
+                <h5 class="text-gray-400 font-bold mb-2 uppercase text-[10px] tracking-wider">О компании (Реквизиты)
+                </h5>
+                <p class="mb-4">ООО «ДЕЛЬТУР», ИНН 0300031761. Юридический адрес: Республика Бурятия, с. Джида, ул.
+                    Транспортная, д. 2, кв. 4. Директор — Данилова Елена Станиславовна.</p>
+
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p>&copy; 2026 Туристическое агентство «Дель Тур». Все права защищены.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-white transition">Политика конфиденциальности</a>
+                        <a href="#" class="hover:text-white transition">Договор оферты</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Плавающая кнопка WhatsApp -->
+    <a href="#"
+        class="fixed bottom-[85px] md:bottom-6 right-6 z-50 bg-[#25D366] hover:bg-green-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 group md:flex hidden">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+            <path
+                d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.441-1.273.606-1.446c.163-.173.346-.226.465-.226s.239.004.341.009c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937 0 3.824-3.113 6.938-6.938 6.938z" />
+        </svg>
+        <div
+            class="absolute right-full mr-4 bg-white text-gray-800 text-sm px-4 py-2 rounded-xl shadow-lg font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Мы онлайн, напишите нам!
+        </div>
+    </a>
+
+    <!-- Мобильный Tab-Bar (отображается только на смартфонах) -->
+    <nav class="mobile-tab-bar">
+        <a href="#search" class="tab-item active">
+            <span class="material-icons">home</span>
+            Главная
+        </a>
+        <a href="#tours" class="tab-item">
+            <span class="material-icons">explore</span>
+            Туры
+        </a>
+        <a href="https://wa.me/79146321129" class="tab-fab shadow-lg shadow-green-500/30">
+            <span class="material-icons" style="font-size: 2rem;">whatsapp</span>
+        </a>
+        <a href="#about" class="tab-item">
+            <span class="material-icons">info</span>
+            О нас
+        </a>
+        <a href="#contacts" class="tab-item">
+            <span class="material-icons">phone</span>
+            Связь
+        </a>
+    </nav>
+
+    <script>
+        // Логика Темной Темы (Dark Mode)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        // Проверяем сохраненную тему в localStorage
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            themeIcon.textContent = 'light_mode';
+        } else {
+            htmlElement.classList.remove('dark');
+            themeIcon.textContent = 'dark_mode';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+                themeIcon.textContent = 'light_mode';
+            } else {
+                localStorage.theme = 'light';
+                themeIcon.textContent = 'dark_mode';
+            }
+        });
+        // Простая логика для шапки при скролле
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95', 'shadow-md');
+                nav.classList.remove('glassmorphism', 'shadow-sm', 'text-white');
+            } else {
+                nav.classList.remove('bg-white/95', 'shadow-md');
+                nav.classList.add('glassmorphism', 'shadow-sm');
+            }
+        });
+
+        // Логика слайдера Hero
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('#slider-dots button');
+            const subtitles = [
+                "Горящие туры, индивидуальные маршруты и пляжный отдых из Улан-Удэ. Доверьте свой отпуск профессионалам!",
+                "Уникальные экспедиции и активный отдых. Покоряйте новые вершины вместе с нами!",
+                "Авторские туры в Азию без виз. Погрузитесь в колорит и культуру востока."
+            ];
+            const subtitleEl = document.getElementById('hero-subtitle');
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function goToSlide(index) {
+                // Убираем активный класс со всех
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => {
+                    d.classList.remove('w-10', 'opacity-100');
+                    d.classList.add('w-2', 'bg-white/50');
+                });
+
+                // Добавляем нужному
+                slides[index].classList.add('active');
+                dots[index].classList.remove('w-2', 'bg-white/50');
+                dots[index].classList.add('w-10', 'bg-white', 'opacity-100');
+
+                // Плавная смена подзаголовка
+                subtitleEl.style.opacity = 0;
+                setTimeout(() => {
+                    subtitleEl.textContent = subtitles[index];
+                    subtitleEl.style.opacity = 1;
+                }, 300);
+
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                let next = currentSlide + 1;
+                if (next >= totalSlides) next = 0;
+                goToSlide(next);
+            }
+
+            // Автоперелистывание
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            // Клик по дотсам
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval); // Сброс таймера при клике
+                    goToSlide(index);
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
