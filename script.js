@@ -107,7 +107,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ========================================
-    // 4. Плавный скролл для якорных ссылок
+    // 4. Лайтбокс для скриншотов отзывов
+    // ========================================
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const screenshots = document.querySelectorAll('.review-screenshot img');
+    let currentIndex = 0;
+
+    if (lightbox && screenshots.length > 0) {
+        screenshots.forEach((img, index) => {
+            img.parentElement.addEventListener('click', () => {
+                currentIndex = index;
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            lightboxImg.src = screenshots[currentIndex].src;
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + screenshots.length;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightbox.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+        lightbox.querySelector('.lightbox__prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
+            lightboxImg.src = screenshots[currentIndex].src;
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + screenshots.length;
+        });
+        lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % screenshots.length;
+            lightboxImg.src = screenshots[currentIndex].src;
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + screenshots.length;
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightbox.querySelector('.lightbox__prev').click();
+            if (e.key === 'ArrowRight') lightbox.querySelector('.lightbox__next').click();
+        });
+    }
+
+
+    // ========================================
+    // 5. Плавный скролл для якорных ссылок
     // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
