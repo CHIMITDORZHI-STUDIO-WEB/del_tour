@@ -61,49 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ========================================
-    // 3. Обработка формы (клиентская валидация + сообщение)
+    // 3. Форма бронирования — Яндекс Формы (iframe)
     // ========================================
-    const form = document.getElementById('bookingForm');
-    const submitBtn = document.getElementById('submitBtn');
-
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = form.querySelector('#name').value.trim();
-            const phone = form.querySelector('#phone').value.trim();
-
-            if (!name || !phone) {
-                shakeBtn();
-                return;
-            }
-
-            // Визуальная обратная связь
-            submitBtn.innerHTML = '<span class="material-icons" style="animation: spin 1s linear infinite">autorenew</span> Отправка...';
-            submitBtn.disabled = true;
-
-            // Имитация отправки (замените на реальный fetch / webhook)
-            setTimeout(() => {
-                submitBtn.innerHTML = '<span class="material-icons">check_circle</span> Заявка отправлена!';
-                submitBtn.style.background = '#10b981';
-                submitBtn.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.3)';
-
-                // Сброс формы через 3 сек
-                setTimeout(() => {
-                    form.reset();
-                    submitBtn.innerHTML = '<span class="material-icons">send</span> Отправить заявку';
-                    submitBtn.style.background = '';
-                    submitBtn.style.boxShadow = '';
-                    submitBtn.disabled = false;
-                }, 3000);
-            }, 1500);
-        });
-    }
-
-    function shakeBtn() {
-        submitBtn.style.animation = 'shake 0.5s ease';
-        setTimeout(() => submitBtn.style.animation = '', 500);
-    }
 
 
     // ========================================
