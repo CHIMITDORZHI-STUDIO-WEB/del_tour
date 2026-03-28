@@ -580,21 +580,99 @@ a {
     font-size: 1.2rem;
 }
 
-.booking__form-wrap {
+.booking__form {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius);
-    padding: 8px;
-    overflow: hidden;
+    padding: 36px;
 }
 
-.booking__iframe {
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
     width: 100%;
-    min-height: 600px;
-    border: none;
+    padding: 14px 16px;
     border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border var(--transition), background var(--transition);
+    outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group select option {
+    color: var(--text);
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--secondary);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.booking__submit {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-family: var(--font-body);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+    margin-top: 4px;
+}
+
+.booking__submit:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+}
+
+.booking__submit:active {
+    transform: scale(0.98);
+}
+
+.booking__privacy {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    margin-top: 14px;
+}
+
+.booking__privacy a {
+    text-decoration: underline;
+    color: var(--secondary);
 }
 
 
@@ -966,12 +1044,8 @@ a {
         height: 70px;
     }
 
-    .booking__form-wrap {
-        padding: 4px;
-    }
-
-    .booking__iframe {
-        min-height: 550px;
+    .booking__form {
+        padding: 24px;
     }
 
     .footer__top {
