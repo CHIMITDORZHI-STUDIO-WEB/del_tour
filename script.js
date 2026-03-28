@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ========================================
-    // 3. Обработка формы — открывает Яндекс Форму
+    // 3. Обработка формы — отправка в WhatsApp
     // ========================================
     const form = document.getElementById('bookingForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -72,6 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const name = form.querySelector('#name').value.trim();
             const phone = form.querySelector('#phone').value.trim();
+            const destination = form.querySelector('#destination');
+            const destinationText = destination.options[destination.selectedIndex].text;
+            const comment = form.querySelector('#comment').value.trim();
 
             if (!name || !phone) {
                 submitBtn.style.animation = 'shake 0.5s ease';
@@ -79,11 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Открываем Яндекс Форму в новой вкладке
-            window.open('https://forms.yandex.ru/cloud/69c75848e010db091dbc961b/', '_blank');
+            // Формируем сообщение для WhatsApp
+            let message = `Заявка с сайта:\n\nИмя: ${name}\nТелефон: ${phone}`;
+            if (destination.value) message += `\nНаправление: ${destinationText}`;
+            if (comment) message += `\nКомментарий: ${comment}`;
+
+            const whatsappUrl = `https://wa.me/79144553394?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
 
             // Визуальная обратная связь
-            submitBtn.innerHTML = '<span class="material-icons">check_circle</span> Форма открыта!';
+            submitBtn.innerHTML = '<span class="material-icons">check_circle</span> Заявка отправлена!';
             submitBtn.style.background = '#10b981';
             submitBtn.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.3)';
             submitBtn.disabled = true;
