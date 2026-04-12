@@ -204,31 +204,37 @@
                         <li><span class="material-icons">check_circle</span> Лучшие цены от туроператоров</li>
                     </ul>
                 </div>
-                <form class="booking__form" id="bookingForm" action="https://forms.yandex.ru/cloud/69c75848e010db091dbc961b/" target="_blank">
+                <form class="booking__form" id="bookingForm"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLScOMUWQm6pIcWXqJmR9EP7ratL8yB-iaocQTvjRXdcerS-j1w/formResponse"
+                    method="POST" target="hidden_iframe">
                     <div class="form-group">
                         <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" placeholder="Например: Алексей" required>
+                        <input type="text" id="name" name="entry.683803762" placeholder="Например: Алексей" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                        <input type="tel" id="phone" name="entry.283436323" placeholder="+7 (___) ___-__-__" required>
                     </div>
                     <div class="form-group">
                         <label for="destination">Направление</label>
-                        <select id="destination" name="destination">
+                        <select id="destination" name="entry.80018516">
                             <option value="">Выберите направление</option>
-                            <option value="manchzhuria">Маньчжурия, Китай</option>
-                            <option value="beidaihe">Бэйдайхэ, Китай</option>
-                            <option value="hailar">Хайлар — Маньчжурия</option>
-                            <option value="harbin">Маньчжурия — Харбин</option>
-                            <option value="dalian">Далянь, Китай</option>
-                            <option value="other">Другое</option>
+                            <option value="Маньчжурия, Китай">Маньчжурия, Китай</option>
+                            <option value="Бэйдайхэ, Китай">Бэйдайхэ, Китай</option>
+                            <option value="Хайлар — Маньчжурия">Хайлар — Маньчжурия</option>
+                            <option value="Маньчжурия — Харбин">Маньчжурия — Харбин</option>
+                            <option value="Далянь, Китай">Далянь, Китай</option>
+                            <option value="Другое">Другое</option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="dates">Желаемые даты</label>
+                        <input type="text" id="dates" name="entry.1598693954" placeholder="Например: 15–25 июля">
+                    </div>
+                    <div class="form-group">
                         <label for="comment">Комментарий</label>
-                        <textarea id="comment" name="comment" rows="3"
-                            placeholder="Пожелания по датам, количество человек..."></textarea>
+                        <textarea id="comment" name="entry.1184742360" rows="3"
+                            placeholder="Количество человек, пожелания..."></textarea>
                     </div>
                     <button type="submit" class="booking__submit" id="submitBtn">
                         <span class="material-icons">send</span> Отправить заявку
@@ -236,6 +242,7 @@
                     <p class="booking__privacy">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой
                             конфиденциальности</a></p>
                 </form>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
             </div>
         </div>
     </section>
