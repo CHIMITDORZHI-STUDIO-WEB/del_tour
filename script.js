@@ -61,37 +61,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ========================================
-    // 3. Обработка формы — отправка в Google Forms
+    // 3. Обработка формы — отправка через FormSubmit (AJAX)
     // ========================================
     const form = document.getElementById('bookingForm');
     const submitBtn = document.getElementById('submitBtn');
 
     if (form && submitBtn) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
             const name = form.querySelector('#name').value.trim();
             const phone = form.querySelector('#phone').value.trim();
 
             if (!name || !phone) {
-                e.preventDefault();
                 submitBtn.style.animation = 'shake 0.5s ease';
                 setTimeout(() => submitBtn.style.animation = '', 500);
                 return;
             }
 
-            // Форма отправляется через hidden_iframe (target="hidden_iframe")
-            // Визуальная обратная связь
-            submitBtn.innerHTML = '<span class="material-icons">check_circle</span> Заявка отправлена!';
-            submitBtn.style.background = '#10b981';
-            submitBtn.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.3)';
             submitBtn.disabled = true;
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="material-icons">hourglass_top</span> Отправляем...';
 
-            setTimeout(() => {
-                form.reset();
-                submitBtn.innerHTML = '<span class="material-icons">send</span> Отправить заявку';
-                submitBtn.style.background = '';
-                submitBtn.style.boxShadow = '';
-                submitBtn.disabled = false;
-            }, 3000);
+            try {
+                const endpoint = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(form)
+                });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+
+                submitBtn.innerHTML = '<span class="material-icons">check_circle</span> Заявка отправлена!';
+                submitBtn.style.background = '#10b981';
+                submitBtn.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.3)';
+
+                setTimeout(() => {
+                    form.reset();
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.background = '';
+                    submitBtn.style.boxShadow = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+            } catch (err) {
+                submitBtn.innerHTML = '<span class="material-icons">error</span> Ошибка, попробуйте позже';
+                submitBtn.style.background = '#ef4444';
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 4000);
+            }
         });
     }
 
